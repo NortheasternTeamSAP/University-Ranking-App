@@ -36,6 +36,7 @@ public class Department {
     //EmployerDirectory employerdirectory;
 
     HashMap<String, CourseSchedule> mastercoursecatalog;
+     ArrayList<Integer> Rating= new ArrayList<>();
 
     public String getName() {
         return name;
@@ -112,12 +113,57 @@ public class Department {
 
     }
 
-    public Course newCourse(String n, String nm, int cr) {
+    public Course newCourse(String n, String nm, int cr,int p) {
 
-        Course c = coursecatalog.newCourse(n, nm, cr);
+        Course c = coursecatalog.newCourse(n, nm, cr,p);
         return c;
     }
+ public int totalDepartmentRevenue(){
 
+        int revenue=0;
+        for(CourseSchedule cs : mastercoursecatalog.values()){
+
+            revenue+= cs.calculateTotalRevenues();
+        }return revenue;
+ }
+        
+        public ArrayList<StudentProfile> CompareByGPA(ArrayList<StudentProfile> list) {
+        Collections.sort(list,
+                (o1, o2) -> Float.compare(o2.getStudentGPA(), o1.getStudentGPA())
+        );
+        return list;
+    }
+        
+        
+   
+    
+  
+     
+ public double percentOfStudentsInTop5RankingInDepartment() {
+        List<StudentProfile> percentlist  = this.getStudentDirectory().getStudentlist().stream().filter(p -> p.getEmploymenthistory().getEmployments().get(p.getEmploymenthistory().getEmployments().size() - 1).getEmployer().getRanking() <= 5).collect(Collectors.toCollection(ArrayList::new));
+        return ((double) percentlist .size() / (double) this.getStudentDirectory().getStudentlist().size()) * 100;
+    }
+
+    
+        public Set<String> getCoursesByMostSalaryPaidinDepartment() {
+        List<StudentProfile> slist = this.getStudentDirectory().getStudentlist();
+        Collections.sort(slist,
+                (o1, o2)
+                -> new Double(o2.getEmploymenthistory().getEmployments().get(o2.getEmploymenthistory().getEmployments().size() - 1).getSalary()).compareTo(o1.getEmploymenthistory().getEmployments().get(o1.getEmploymenthistory().getEmployments().size() - 1).getSalary())
+        );
+
+         List<CourseOffer> courselist = new ArrayList<>();
+        //taking top 3 max salaries
+        for (int i = 0; i <= 2; i++) {
+            List<Employment> employments = slist.get(i).getEmploymenthistory().getEmployments();
+            courselist.addAll(employments.get(employments.size() - 1).getRelevantcourseoffers());
+        }
+        Set<String> namelist = courselist.stream()
+                .map(CourseOffer::getCourseName)
+                .collect(Collectors.toSet());
+        return namelist;
+    }
+        
     public int calculateRevenuesBySemester(String semester) {
 
         CourseSchedule css = mastercoursecatalog.get(semester);
@@ -142,42 +188,18 @@ public class Department {
 
     }
     
-    public ArrayList<StudentProfile> CompareByGPA(ArrayList<StudentProfile> list) {
-        Collections.sort(list,
-                (o1, o2) -> Float.compare(o2.getStudentGPA(), o1.getStudentGPA())
-        );
-        return list;
-    }
-    
-    public Set<String> getCoursesByMostSalaryPaid() {
-        List<StudentProfile> slist = this.getStudentDirectory().getStudentlist();
-        Collections.sort(slist,
-                (o1, o2)
-                -> new Double(o2.getEmploymenthistory().getEmployments()
-                        .get(o2.getEmploymenthistory().getEmployments().size() - 1).getSalary()).compareTo(o1.getEmploymenthistory().getEmployments().get(o1.getEmploymenthistory().getEmployments().size() - 1).getSalary())
-        );
-
-        List<CourseOffer> courselist = new ArrayList<>();
-        //taking top 3 max salaries
-        for (int i = 0; i <= 2; i++) {
-            List<Employment> employments = slist.get(i).getEmploymenthistory().getEmployments();
-            courselist.addAll(employments.get(employments.size() - 1).getRelevantcourseoffers());
-        }
-        Set<String> namelist = courselist.stream()
-                .map(CourseOffer::getCourseName)
-                .collect(Collectors.toSet());
-        return namelist;
-    }
-     
-     public double percentageOfTop5Students() {
-        List<StudentProfile> percentlist = this.getStudentDirectory().getStudentlist().stream().filter(p -> p.getEmploymenthistory().getEmployments().get(p.getEmploymenthistory().getEmployments().size() - 1).getEmployer().getRanking() <= 5).collect(Collectors.toCollection(ArrayList::new));
-        return ((double) percentlist.size() / (double) this.getStudentDirectory().getStudentlist().size()) * 100;
-    }
-    
-    
-    
   
-    
+        public void setRating(int rating) {
+
+        Rating.add(rating);
+        Collections.sort(Rating, Collections.reverseOrder());
+
+    }
+
+    public ArrayList<Integer> getRating() {
+
+        return Rating;
+    }
     
     
     

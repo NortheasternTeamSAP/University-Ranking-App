@@ -18,7 +18,7 @@ public class CourseOffer {
 
     Course course;
     ArrayList<Seat> seatlist;
-    FacultyAssignment facultyassignment;
+    FacultyAssignment facultyassign;
 
     public CourseOffer(Course c) {
         course = c;
@@ -26,11 +26,11 @@ public class CourseOffer {
     }
     public void AssignAsTeacher(FacultyProfile fp) {
 
-        facultyassignment = new FacultyAssignment(fp, this);
+        facultyassign = new FacultyAssignment(fp, this);
     }
 
     public FacultyProfile getFacultyProfile() {
-        return facultyassignment.getFacultyProfile();
+        return facultyassign.getFacultyProfile();
     }
 
     public String getCourseNumber() {
@@ -95,5 +95,19 @@ public class CourseOffer {
     }
    public String getCourseName() {
         return course.getName();
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+    
+      public void setTeacherRating(int rating) {
+
+        facultyassign.setRating(rating);
+    }
+
+    public ArrayList<Integer> getTeacherRating() {
+
+        return facultyassign.getRating();
     }
 }

@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author 12013
+ * @author preet
  */
 public class Details extends javax.swing.JPanel {
 

@@ -47,10 +47,16 @@ public class AdminDB extends javax.swing.JPanel {
         btnStuInfo = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
         workArea = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
+        controlPanel.setBackground(new java.awt.Color(51, 51, 51));
+
+        btnCourseDetail.setBackground(new java.awt.Color(51, 51, 51));
         btnCourseDetail.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        btnCourseDetail.setForeground(new java.awt.Color(255, 255, 255));
         btnCourseDetail.setText("Course Rankings");
         btnCourseDetail.setToolTipText("Click to view Course Rankings");
+        btnCourseDetail.setBorderPainted(false);
         btnCourseDetail.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCourseDetail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,9 +64,12 @@ public class AdminDB extends javax.swing.JPanel {
             }
         });
 
+        btnOverview.setBackground(new java.awt.Color(51, 51, 51));
         btnOverview.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        btnOverview.setForeground(new java.awt.Color(255, 255, 255));
         btnOverview.setText("Overview");
         btnOverview.setToolTipText("Click to view analysis");
+        btnOverview.setBorderPainted(false);
         btnOverview.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnOverview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,9 +77,12 @@ public class AdminDB extends javax.swing.JPanel {
             }
         });
 
+        btnStuInfo.setBackground(new java.awt.Color(51, 51, 51));
         btnStuInfo.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        btnStuInfo.setForeground(new java.awt.Color(255, 255, 255));
         btnStuInfo.setText("Student information");
         btnStuInfo.setToolTipText("Click to view Details of all students");
+        btnStuInfo.setBorderPainted(false);
         btnStuInfo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnStuInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,9 +90,12 @@ public class AdminDB extends javax.swing.JPanel {
             }
         });
 
+        btnLogOut.setBackground(new java.awt.Color(51, 51, 51));
         btnLogOut.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        btnLogOut.setForeground(new java.awt.Color(255, 255, 255));
         btnLogOut.setText("Log Out");
         btnLogOut.setToolTipText("Click to view Course Rankings");
+        btnLogOut.setBorderPainted(false);
         btnLogOut.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,42 +108,53 @@ public class AdminDB extends javax.swing.JPanel {
         controlPanelLayout.setHorizontalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCourseDetail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnOverview, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnStuInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(controlPanelLayout.createSequentialGroup()
+                                .addComponent(btnOverview, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(btnStuInfo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
-
-        controlPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCourseDetail, btnLogOut, btnOverview, btnStuInfo});
-
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(btnStuInfo)
+                .addGap(71, 71, 71)
+                .addComponent(btnStuInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnOverview)
-                .addGap(13, 13, 13)
-                .addComponent(btnCourseDetail)
+                .addComponent(btnOverview, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnLogOut)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addComponent(btnCourseDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(controlPanel);
+
+        workArea.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel1.setBackground(new java.awt.Color(204, 0, 51));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("AdminDashBoard");
+        jLabel1.setOpaque(true);
 
         javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
         workArea.setLayout(workAreaLayout);
         workAreaLayout.setHorizontalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 485, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
         );
         workAreaLayout.setVerticalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
+            .addGroup(workAreaLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 355, Short.MAX_VALUE))
         );
 
         splitPane.setRightComponent(workArea);
@@ -137,7 +163,7 @@ public class AdminDB extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane)
+            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,6 +215,7 @@ public class AdminDB extends javax.swing.JPanel {
     private javax.swing.JButton btnOverview;
     private javax.swing.JButton btnStuInfo;
     private javax.swing.JPanel controlPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables

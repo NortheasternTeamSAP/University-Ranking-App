@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author snehaswaroop
+ * @author preet
  */
 public class ViewStudentEmplyment extends javax.swing.JPanel {
 
@@ -59,10 +59,16 @@ public class ViewStudentEmplyment extends javax.swing.JPanel {
         lblName = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(51, 51, 51));
+
         lblView.setFont(new java.awt.Font("Lucida Grande", 2, 16)); // NOI18N
         lblView.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblView.setText("View Employment Data");
 
+        jScrollPane1.setBackground(new java.awt.Color(204, 0, 51));
+
+        tblEmp.setBackground(new java.awt.Color(204, 0, 51));
+        tblEmp.setForeground(new java.awt.Color(102, 102, 102));
         tblEmp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -71,7 +77,7 @@ public class ViewStudentEmplyment extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Company", "Position", "Salary", "Ranking", "Relevant Courses"
+                "Company", "Job Title", "Salary", "Company Ranking", "Relevant Courses"
             }
         ) {
             boolean[] canEdit = new boolean [] {

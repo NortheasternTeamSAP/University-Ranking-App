@@ -13,11 +13,12 @@ public class Course {
     String number;
     String name;
     int credits;
-    int price = 1500; //per credit hour
-    public Course(String n, String numb, int ch){
+    int price ; //per credit hour
+    public Course(String n, String numb, int ch,int p){
         name = n;
         number = numb;
         credits = ch;
+        price=p;
         
         
     }
