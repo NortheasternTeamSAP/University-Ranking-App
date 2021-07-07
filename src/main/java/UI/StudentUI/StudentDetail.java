@@ -5,6 +5,20 @@
  */
 package StudentUI;
 
+
+import UI.jLoginPanel;
+import javax.swing.JPanel;
+
+import java.awt.CardLayout;
+
+import info5100.university.example.CourseSchedule.SeatAssignment;
+import info5100.university.example.Department.Department;
+import info5100.university.example.Persona.EmploymentHistory.EmploymentHistory;
+import info5100.university.example.Persona.StudentProfile;
+import java.awt.Component;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author preet
@@ -12,10 +26,31 @@ package StudentUI;
 public class StudentDetail extends javax.swing.JPanel {
 
     /**
-     * Creates new form StudentDetail
+     * Creates new form StudentInfo
      */
+    JPanel mainWorkArea;
+    StudentProfile studentdetails;
+    Department department;
+    EmploymentHistory info;
+
     public StudentDetail() {
+
+    }
+
+    public StudentDetail(JPanel mainWorkArea, Department d, StudentProfile studentdata) {
+
         initComponents();
+
+        this.mainWorkArea = mainWorkArea;
+        this.department = d;
+        this.studentdetails = studentdata;
+
+        if (studentdata != null) {
+            this.info = studentdata.getEmploymenthistory();
+            populateTable();
+
+        }
+
     }
 
     /**
@@ -27,19 +62,199 @@ public class StudentDetail extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblStudent = new javax.swing.JTable();
+        lblGPA = new javax.swing.JLabel();
+        txtGPA = new javax.swing.JTextField();
+        AddJobDetails = new javax.swing.JButton();
+        lblStudentName = new javax.swing.JLabel();
+        studentName = new javax.swing.JLabel();
+        btnViewEmployment = new javax.swing.JButton();
+        Logout = new javax.swing.JButton();
+
+        tblStudent.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Course1", null, null, null},
+                {"Course2", null, null, null},
+                {"Course3", null, null, null},
+                {"Course4", null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Index", "Course Number", "Course Name", "Score"
+            }
+        ));
+        tblStudent.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblStudent.setEnabled(false);
+        tblStudent.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                tblStudentComponentAdded(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblStudent);
+        if (tblStudent.getColumnModel().getColumnCount() > 0) {
+            tblStudent.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        lblGPA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGPA.setText("Total GPA");
+
+        txtGPA.setEditable(false);
+
+        AddJobDetails.setText("Add Employment");
+        AddJobDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddJobDetailsActionPerformed(evt);
+            }
+        });
+
+        lblStudentName.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        lblStudentName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblStudentName.setText("Welcome ");
+
+        studentName.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        studentName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnViewEmployment.setText("View Job Details");
+        btnViewEmployment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewEmploymentActionPerformed(evt);
+            }
+        });
+
+        Logout.setText("Logout");
+        Logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblStudentName, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(studentName, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(AddJobDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGPA, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtGPA, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewEmployment, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(18, 578, Short.MAX_VALUE)
+                .addComponent(Logout)
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Logout)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblStudentName, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addComponent(studentName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGPA)
+                    .addComponent(txtGPA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AddJobDetails)
+                    .addComponent(btnViewEmployment))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AddJobDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddJobDetailsActionPerformed
+        // TODO add your handling code here:
+
+        StudentEmployment emp = new StudentEmployment(mainWorkArea, studentdetails, department);
+        mainWorkArea.add("WordAreaPanel", emp);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
+
+
+    }//GEN-LAST:event_AddJobDetailsActionPerformed
+
+    private void tblStudentComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tblStudentComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblStudentComponentAdded
+
+    private void btnViewEmploymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEmploymentActionPerformed
+        // TODO add your handling code here:
+        ViewStudentEmplyment employ = new ViewStudentEmplyment(mainWorkArea, studentdetails, department);
+        mainWorkArea.add("WordAreaPanel", employ);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.next(mainWorkArea);
+
+    }//GEN-LAST:event_btnViewEmploymentActionPerformed
+
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+        // TODO add your handling code here:
+         mainWorkArea.remove(this);
+        Component[] componentArray = mainWorkArea.getComponents();
+        Component component = componentArray[0];
+        jLoginPanel loginPanel = (jLoginPanel) component;
+        loginPanel.populateRoleCombo();
+
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.previous(mainWorkArea);
+        
+    }//GEN-LAST:event_LogoutActionPerformed
+
+    public void populateTable() {
+        studentName.setText(studentdetails.getPerson().getName());
+        DefaultTableModel model = (DefaultTableModel) tblStudent.getModel();
+        model.setRowCount(0);
+        List<SeatAssignment> list = studentdetails.getTranscript().getSeatAssignments();
+        int num = 0;
+
+        for (SeatAssignment co : list) {
+
+            Object[] row = new Object[4];
+            row[0] = num + 1;
+            row[1] = co.getSeat().getCourseoffer().getCourseNumber();
+            row[2] = co.getSeat().getCourseoffer().getCourseName();
+            row[3] = String.format("%.1f", co.getGrade());
+
+            model.addRow(row);
+            num++;
+        }
+        txtGPA.setText(String.format("%.1f", studentdetails.getTranscript().calculateGPA()));
+
+    }
+
+    @Override
+    public String toString() {
+        return "Student";
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddJobDetails;
+    private javax.swing.JButton Logout;
+    private javax.swing.JButton btnViewEmployment;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblGPA;
+    private javax.swing.JLabel lblStudentName;
+    private javax.swing.JLabel studentName;
+    private javax.swing.JTable tblStudent;
+    private javax.swing.JTextField txtGPA;
     // End of variables declaration//GEN-END:variables
 }
