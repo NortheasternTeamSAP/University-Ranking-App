@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author snehaswaroop
+ * @author preet
  */
 public class StudentDetail extends javax.swing.JPanel {
 
