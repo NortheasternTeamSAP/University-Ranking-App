@@ -1,15 +1,15 @@
-package ui;
+package UI;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//import AdminUI.AdminInfo;
+
+import StudentUI.StudentDetail;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
-//import StudentUI.StudentInfo;
 import info5100.university.example.Department.Department;
 import info5100.university.example.Persona.StudentProfile;
 
@@ -17,7 +17,7 @@ import info5100.university.example.Persona.StudentProfile;
  *
  * @author snehaswaroop
  */
-public class LoginPanel extends javax.swing.JPanel {
+public class jLoginPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form LoginScreen
@@ -26,11 +26,11 @@ public class LoginPanel extends javax.swing.JPanel {
     Department department;
     StudentProfile selectedID = null;
 
-    public LoginPanel(JPanel mainWorkArea, Department d) {
+    public jLoginPanel(JPanel mainWorkArea, Department d) {
         initComponents();
 
         this.mainWorkArea = mainWorkArea;
-        this.department = department;
+        this.department = d;
         lblStudentID.setVisible(false);
         txtStudentID.setVisible(false);
         populateRoleCombo();
@@ -134,9 +134,9 @@ public class LoginPanel extends javax.swing.JPanel {
                 warningForValidId.setText("Please enter valid student Id");
                 
             }
-        } else if (selectedPanel.getClass() == AdminDB.class) {
+        } else if (selectedPanel.getClass() == AdminUI.AdminDB.class) {
             warningForValidId.setText("");
-            selectedPanel = new AdminDB(mainWorkArea, department);
+            selectedPanel = new AdminUI.AdminDB(mainWorkArea, department);
             mainWorkArea.add("WordAreaPanel", selectedPanel);
             CardLayout layout = (CardLayout) mainWorkArea.getLayout();
             layout.next(mainWorkArea);
@@ -153,8 +153,8 @@ public class LoginPanel extends javax.swing.JPanel {
     public void populateRoleCombo() {
 
         cmbRoles.removeAllItems();
-        AdminDB admin = new AdminDB(mainWorkArea, department);
-        StudentDetail student = new StudentDetail(mainWorkArea, department, selectedID);
+        AdminUI.AdminDB admin = new AdminUI.AdminDB(mainWorkArea, department);
+       StudentDetail student = new StudentDetail(mainWorkArea, department, selectedID);
 
         cmbRoles.addItem(admin);
         cmbRoles.addItem(student);
@@ -171,7 +171,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private void updateRolesVisibility() {
         
         warningForValidId.setText("");
-        if ((cmbRoles.getSelectedItem() == null) || (cmbRoles.getSelectedItem().getClass() == AdminDB.class)) {
+        if ((cmbRoles.getSelectedItem() == null) || (cmbRoles.getSelectedItem().getClass() == AdminUI.AdminDB.class)) {
             selectedID = null;
             lblStudentID.setVisible(false);
             txtStudentID.setVisible(false);
