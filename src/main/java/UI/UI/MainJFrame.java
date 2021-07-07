@@ -1,32 +1,30 @@
-package ui;
+package UI;
+
+
+
+import info5100.university.example.Department.Department;
+import java.awt.CardLayout;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//import fakerpackage.DataGenerator;
-import java.awt.CardLayout;
-
-import info5100.university.example.Department.Department;
 
 /**
  *
- * @author snehaswaroop
+ * @author preet
  */
 public class MainJFrame extends javax.swing.JFrame {
-
-    Department department;
-
+Department department;
+    /**
+     * Creates new form MainJFrame
+     */
     public MainJFrame() {
         initComponents();
+        setResizable(true);
+setLoginJPanel();
 
-        //DataGenerator generator = DataGenerator.getInstance();
-        //this.d = generator.generateDepartmentData();
-        setSize(800, 600);
-        setResizable(false);
-
-        setLoginScreen();
     }
 
     /**
@@ -38,21 +36,37 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSplitPane1 = new javax.swing.JSplitPane();
+        controlpanel = new javax.swing.JPanel();
         mainWorkArea = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        javax.swing.GroupLayout controlpanelLayout = new javax.swing.GroupLayout(controlpanel);
+        controlpanel.setLayout(controlpanelLayout);
+        controlpanelLayout.setHorizontalGroup(
+            controlpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        controlpanelLayout.setVerticalGroup(
+            controlpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        jSplitPane1.setLeftComponent(controlpanel);
+
         mainWorkArea.setLayout(new java.awt.CardLayout());
+        jSplitPane1.setRightComponent(mainWorkArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainWorkArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainWorkArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -84,7 +98,6 @@ public class MainJFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -94,16 +107,26 @@ public class MainJFrame extends javax.swing.JFrame {
         });
     }
 
-    private void setLoginScreen() {
-
-       LoginPanel ls = new LoginPanel(mainWorkArea, department);
-        mainWorkArea.add("LoginScreen", ls);
-        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
-        layout.next(mainWorkArea);
-
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel controlpanel;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel mainWorkArea;
     // End of variables declaration//GEN-END:variables
+
+    private void setLoginJPanel() {
+        
+
+
+
+       jLoginPanel ljp = new jLoginPanel(mainWorkArea,department);
+       mainWorkArea.add("jLoginPanel" , ljp);
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+       layout.next(mainWorkArea);
+    
+
+
+
+
+
+    }
 }

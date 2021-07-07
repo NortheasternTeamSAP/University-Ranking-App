@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package StudentUI;
 
 /**
  *
- * @author sravy
+ * @author preet
  */
-public class DashBoardJPanel extends javax.swing.JPanel {
+public class StudentDetail extends javax.swing.JPanel {
 
     /**
-     * Creates new form DashBoard
+     * Creates new form StudentDetail
      */
-    public DashBoardJPanel() {
+    public StudentDetail() {
         initComponents();
     }
 
