@@ -7,7 +7,7 @@ package info5100.university.example.Persona;
 
 import info5100.university.example.CourseSchedule.CourseLoad;
 import info5100.university.example.CourseSchedule.CourseOffer;
-import info5100.university.example.Persona.EmploymentHistory.EmploymentHistroy;
+import info5100.university.example.Persona.EmploymentHistory.EmploymentHistory;
 import java.util.List;
 
 /**
@@ -18,14 +18,14 @@ public class StudentProfile {
 
     Person person;
     Transcript transcript;
-    EmploymentHistroy employmenthistory;
+    EmploymentHistory employmenthistory;
     
 
     public StudentProfile(Person p) {
 
         person = p;
         transcript = new Transcript();
-        employmenthistory = new EmploymentHistroy();
+        employmenthistory = new EmploymentHistory();
     }
 
     public boolean isMatch(String id) {
@@ -76,11 +76,11 @@ public class StudentProfile {
         this.transcript = transcript;
     }
 
-    public EmploymentHistroy getEmploymenthistory() {
+    public EmploymentHistory getEmploymenthistory() {
         return employmenthistory;
     }
 
-    public void setEmploymenthistory(EmploymentHistroy employmenthistory) {
+    public void setEmploymenthistory(EmploymentHistory employmenthistory) {
         this.employmenthistory = employmenthistory;
     }
     

@@ -15,7 +15,7 @@ import info5100.university.example.Persona.StudentProfile;
 
 /**
  *
- * @author snehaswaroop
+ * @author preet
  */
 public class jLoginPanel extends javax.swing.JPanel {
 
@@ -56,7 +56,7 @@ public class jLoginPanel extends javax.swing.JPanel {
         lblRole.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRole.setText("Choose Roles");
 
-        cmbRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Student" }));
+        cmbRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Student", "Faculty" }));
         cmbRoles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbRolesActionPerformed(evt);

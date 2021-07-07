@@ -36,38 +36,13 @@ setLoginJPanel();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
-        controlpanel = new javax.swing.JPanel();
         mainWorkArea = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout controlpanelLayout = new javax.swing.GroupLayout(controlpanel);
-        controlpanel.setLayout(controlpanelLayout);
-        controlpanelLayout.setHorizontalGroup(
-            controlpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        controlpanelLayout.setVerticalGroup(
-            controlpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        jSplitPane1.setLeftComponent(controlpanel);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
         mainWorkArea.setLayout(new java.awt.CardLayout());
-        jSplitPane1.setRightComponent(mainWorkArea);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
+        getContentPane().add(mainWorkArea, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,8 +83,6 @@ setLoginJPanel();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel controlpanel;
-    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel mainWorkArea;
     // End of variables declaration//GEN-END:variables
 

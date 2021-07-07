@@ -11,7 +11,7 @@ import info5100.university.example.Department.Department;
 
 /**
  *
- * @author 12013
+ * @author preet
  */
 public class AdminOverview extends javax.swing.JPanel {
 

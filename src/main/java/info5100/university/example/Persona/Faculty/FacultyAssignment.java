@@ -6,6 +6,8 @@
 package info5100.university.example.Persona.Faculty;
 
 import info5100.university.example.CourseSchedule.CourseOffer;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -15,6 +17,8 @@ public class FacultyAssignment {
     
     CourseOffer courseoffer;
     FacultyProfile facultyprofile;
+     ArrayList<Integer> Rating= new ArrayList<>();
+    
     public FacultyAssignment(FacultyProfile fp, CourseOffer co){
         courseoffer = co;
         facultyprofile = fp;
@@ -22,5 +26,16 @@ public class FacultyAssignment {
     public FacultyProfile getFacultyProfile(){
         return facultyprofile;
     }
-    
+         public void setRating(int rating) {
+
+        Rating.add(rating);
+        Collections.sort(Rating, Collections.reverseOrder());
+
+    }
+
+    public ArrayList<Integer> getRating() {
+
+        return Rating;
+    }
+ 
 }

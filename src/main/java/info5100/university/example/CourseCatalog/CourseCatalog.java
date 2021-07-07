@@ -25,8 +25,8 @@ public class CourseCatalog {
         return courselist;
     }
     
-    public Course newCourse(String n, String nm, int cr){
-        Course c = new Course(n, nm, cr);
+    public Course newCourse(String n, String nm, int cr,int p){
+        Course c = new Course(n, nm, cr,p);
         courselist.add(c);
         return c;
     }
