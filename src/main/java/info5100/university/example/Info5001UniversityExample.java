@@ -11,7 +11,7 @@ import info5100.university.example.CourseSchedule.CourseOffer;
 import info5100.university.example.CourseSchedule.CourseSchedule;
 import info5100.university.example.Department.Department;
 import info5100.university.example.Employer.EmployerProfile;
-import info5100.university.example.Persona.EmploymentHistory.EmploymentHistroy;
+import info5100.university.example.Persona.EmploymentHistory.EmploymentHistory;
 import info5100.university.example.Persona.Person;
 import info5100.university.example.Persona.PersonDirectory;
 import info5100.university.example.Persona.StudentDirectory;
@@ -34,7 +34,7 @@ public class Info5001UniversityExample {
         Faker faker = new Faker();
         Department department = new Department("Information Systems");
 
-        Course course = department.newCourse("app eng", "info 5100", 4);
+        Course course = department.newCourse("app eng", "info 5100", 4,1600);
 
         CourseSchedule courseschedule = department.newCourseSchedule("Fall2020");
 
@@ -53,7 +53,7 @@ public class Info5001UniversityExample {
         int total = department.calculateRevenuesBySemester("Fall2020");
         System.out.print("Total: " + total);
         
-        EmploymentHistroy e = new EmploymentHistroy();
+        EmploymentHistory e = new EmploymentHistory();
         EmployerProfile employer = new EmployerProfile("google", 10);
         List<CourseOffer> co = new ArrayList<>();
         

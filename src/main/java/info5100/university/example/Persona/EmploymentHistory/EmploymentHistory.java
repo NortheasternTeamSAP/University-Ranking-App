@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author kal bugrara
  */
-public class EmploymentHistroy {
+public class EmploymentHistory {
     
     ArrayList<Employment> employments;
     int promotion =0;
@@ -33,7 +33,7 @@ public class EmploymentHistroy {
     }
     
     
-    public EmploymentHistroy(){
+    public EmploymentHistory(){
         employments = new ArrayList();
     }
     

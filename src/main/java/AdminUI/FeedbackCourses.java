@@ -10,7 +10,7 @@ import info5100.university.example.Department.Department;
 
 /**
  *
- * @author 12013
+ * @author preet
  */
 public class FeedbackCourses extends javax.swing.JPanel {
 
@@ -128,17 +128,17 @@ public class FeedbackCourses extends javax.swing.JPanel {
             lblcourse.setVisible(true);
             jScrollPane1.setVisible(true);
             jTextArea1.setLineWrap(true);
-           // jTextArea1.setText(department.getPopularCoursesBySalary().toString());
+           jTextArea1.setText(department.getCoursesByMostSalaryPaidinDepartment().toString());
         } else if (cmbCriteria.getSelectedItem() == "Promotions") {
           jScrollPane1.setVisible(true);
             lblcourse.setVisible(true);
             jTextArea1.setLineWrap(true);
-          //  jTextArea1.setText(department.getPopularCoursesByPromotion().toString());
+          // jTextArea1.setText(department.getPopularCoursesByPromotion().toString());
         } else if (cmbCriteria.getSelectedItem() == "Employer Rankings") {
             jScrollPane1.setVisible(true);
             lblcourse.setVisible(true);
             jTextArea1.setLineWrap(true);
-           // jTextArea1.setText(department.getPopularCoursesByCompanyRanking().toString());
+         //  jTextArea1.setText(department.getPopularCoursesByCompanyRanking().toString());
         }
         else{
             lblcourse.setVisible(false);
