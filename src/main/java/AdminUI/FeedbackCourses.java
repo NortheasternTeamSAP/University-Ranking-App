@@ -61,9 +61,11 @@ public class FeedbackCourses extends javax.swing.JPanel {
         lblcourse.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblcourse.setText("Courses :");
 
+        jLabel3.setBackground(new java.awt.Color(204, 0, 51));
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("COURSE RANKING");
+        jLabel3.setText("Course Feedback");
+        jLabel3.setOpaque(true);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -90,8 +92,8 @@ public class FeedbackCourses extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel3)
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,12 +135,12 @@ public class FeedbackCourses extends javax.swing.JPanel {
           jScrollPane1.setVisible(true);
             lblcourse.setVisible(true);
             jTextArea1.setLineWrap(true);
-          // jTextArea1.setText(department.getPopularCoursesByPromotion().toString());
+           jTextArea1.setText(department.getPopularCoursesByJobPromotion().toString());
         } else if (cmbCriteria.getSelectedItem() == "Employer Rankings") {
             jScrollPane1.setVisible(true);
             lblcourse.setVisible(true);
             jTextArea1.setLineWrap(true);
-         //  jTextArea1.setText(department.getPopularCoursesByCompanyRanking().toString());
+          jTextArea1.setText(department.getPopularCoursesByOrganizationRanking().toString());
         }
         else{
             lblcourse.setVisible(false);

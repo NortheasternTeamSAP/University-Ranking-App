@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class FacultyDirectory {
 
     Department department;
-    ArrayList<FacultyProfile> teacherlist;
+    ArrayList<FacultyProfile> teacherlist=new ArrayList<>();
 
     public FacultyDirectory(Department d) {
 
@@ -29,7 +29,7 @@ public class FacultyDirectory {
         return teacherlist;
     }
 
-    public FacultyProfile newStudentProfile(Person p) {
+    public FacultyProfile newFacultyProfile(Person p) {
 
         FacultyProfile sp = new FacultyProfile(p);
         teacherlist.add(sp);

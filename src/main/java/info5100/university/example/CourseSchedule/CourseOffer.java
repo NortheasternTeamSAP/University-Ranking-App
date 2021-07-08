@@ -110,4 +110,18 @@ public class CourseOffer {
 
         return facultyassign.getRating();
     }
+    
+    
+         public void setCourseRating(int rating) {
+
+        course.setRating(rating);
+    }
+
+    public ArrayList<Integer> getCourseRating() {
+
+        return course.getRating();
+    }
+    
+    
+    
 }

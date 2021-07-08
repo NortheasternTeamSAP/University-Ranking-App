@@ -33,6 +33,14 @@ public class FacultyAssignment {
 
     }
 
+    public CourseOffer getCourseoffer() {
+        return courseoffer;
+    }
+
+    public FacultyProfile getFacultyprofile() {
+        return facultyprofile;
+    }
+
     public ArrayList<Integer> getRating() {
 
         return Rating;

@@ -2,6 +2,7 @@ package UI;
 
 
 
+import fakerPackage.DataStore;
 import info5100.university.example.Department.Department;
 import java.awt.CardLayout;
 
@@ -22,8 +23,10 @@ Department department;
      */
     public MainJFrame() {
         initComponents();
+         DataStore dataGen = DataStore.getDataInstance();
+        this.department = dataGen.generateDepartmentData();
         setResizable(true);
-setLoginJPanel();
+        setLoginJPanel();
 
     }
 

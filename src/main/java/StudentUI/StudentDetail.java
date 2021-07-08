@@ -73,9 +73,9 @@ public class StudentDetail extends javax.swing.JPanel {
         Logout = new javax.swing.JButton();
         btnfeedback = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(51, 51, 51));
+        setBackground(new java.awt.Color(204, 204, 204));
 
-        tblStudent.setBackground(new java.awt.Color(204, 0, 51));
+        tblStudent.setBackground(new java.awt.Color(204, 204, 204));
         tblStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Course1", null, null, null},
@@ -139,7 +139,7 @@ public class StudentDetail extends javax.swing.JPanel {
             }
         });
 
-        btnfeedback.setBackground(new java.awt.Color(204, 0, 51));
+        btnfeedback.setBackground(new java.awt.Color(51, 51, 51));
         btnfeedback.setText("Feedback");
         btnfeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +242,7 @@ public class StudentDetail extends javax.swing.JPanel {
 
     private void btnfeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfeedbackActionPerformed
        Feedback feedback = new Feedback(mainWorkArea, department,studentdetails);
-        mainWorkArea.add("WordAreaPanel", feedback);
+        mainWorkArea.add("feedbackpanel", feedback);
         CardLayout layout = (CardLayout) mainWorkArea.getLayout();
         layout.next(mainWorkArea);
 

@@ -10,6 +10,11 @@ package info5100.university.example.Persona;
  * @author kal bugrara
  */
 public class Person {
+
+    @Override
+    public String toString() {
+        return "" + name ;
+    }
     
     String id;
     String name;

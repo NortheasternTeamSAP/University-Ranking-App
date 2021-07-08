@@ -24,6 +24,11 @@ public class FacultyProfile {
         facultyassignments = new ArrayList();
     }
 
+    @Override
+    public String toString() {
+        return "" + person.getName();
+    }
+
     public FacultyAssignment AssignAsTeacher(CourseOffer co){
         
         FacultyAssignment fa = new FacultyAssignment(this, co);
@@ -34,6 +39,10 @@ public class FacultyProfile {
     
     public FacultyProfile getCourseOffer(String courseid){
         return null; //complete it later
+    }
+
+    public ArrayList<FacultyAssignment> getFacultyassignments() {
+        return facultyassignments;
     }
 
     public boolean isMatch(String id) {
