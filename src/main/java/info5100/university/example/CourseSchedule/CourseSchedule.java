@@ -70,5 +70,12 @@ public class CourseSchedule {
         }
         return sum;
     }
+   public ArrayList<CourseOffer> getSchedule() {
+        return schedule;
+    }
 
+    public void setSchedule(ArrayList<CourseOffer> schedule) {
+        this.schedule = schedule;
+    }
+    
 }

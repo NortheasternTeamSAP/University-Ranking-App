@@ -46,6 +46,11 @@ public class Department {
         return coursecatalog;
     }
 
+    @Override
+    public String toString() {
+        return "" + name + '}';
+    }
+
     public PersonDirectory getPersondirectory() {
         return persondirectory;
     }
@@ -61,13 +66,48 @@ public class Department {
     public HashMap<String, CourseSchedule> getMastercoursecatalog() {
         return mastercoursecatalog;
     }
+    
+ public Set<String> getPopularCoursesByJobPromotion() {
+        List<StudentProfile> list = this.getStudentDirectory().getStudentlist().stream().filter(p -> p.getEmploymenthistory().getPromotion() >= 2).collect(Collectors.toCollection(ArrayList::new));
+        List<CourseOffer> courselist = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            List<Employment> emp = list.get(i).getEmploymenthistory().getEmployments();
+            courselist.addAll(emp.get(emp.size() - 1).getRelevantcourseoffers());
+        }
+        Set<String> namesList = courselist.stream()
+                .map(CourseOffer::getCourseName)
+                .collect(Collectors.toSet());
+        return namesList;
+    }
+public Set<String> getPopularCoursesByOrganizationRanking() {
+        List<StudentProfile> list = this.getStudentDirectory().getStudentlist().stream().filter(p -> p.getEmploymenthistory().getEmployments().get(p.getEmploymenthistory().getEmployments().size() - 1).getEmployer().getRanking() <= 3).collect(Collectors.toCollection(ArrayList::new));
+        List<CourseOffer> courselist = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            List<Employment> emp = list.get(i).getEmploymenthistory().getEmployments();
+            courselist.addAll(emp.get(emp.size() - 1).getRelevantcourseoffers());
+        }
+        Set<String> namesList = courselist.stream()
+                .map(CourseOffer::getCourseName)
+                .collect(Collectors.toSet());
+        return namesList;
+    }
 
+ public double percentageOfStudentsBasedonGrade() {
+        List<StudentProfile> list = this.getStudentDirectory().getStudentlist().stream().filter(p -> p.getStudentGPA()>= 3.5).collect(Collectors.toCollection(ArrayList::new));
+        return ((double) list.size() / (double) this.getStudentDirectory().getStudentlist().size()) * 100;
+    }
+
+    public double percentageOfStudentsBasedonJobPromotions() {
+        List<StudentProfile> list = this.getStudentDirectory().getStudentlist().stream().filter(p -> p.getEmploymenthistory().getPromotion() >= 2).collect(Collectors.toCollection(ArrayList::new));
+        return ((double) list.size() / (double) this.getStudentDirectory().getStudentlist().size()) * 100;
+    }
     public Department(String n) {
         name = n;
         mastercoursecatalog = new HashMap<String, CourseSchedule>();
         coursecatalog = new CourseCatalog(this);
         studentdirectory = new StudentDirectory(this); //pass the department object so it stays linked to it
         persondirectory = new PersonDirectory();
+        facultydirectory=new FacultyDirectory(this);
     }
 
     public PersonDirectory getPersonDirectory() {
@@ -153,7 +193,7 @@ public class Department {
         );
 
          List<CourseOffer> courselist = new ArrayList<>();
-        //taking top 3 max salaries
+        //  maxium 3 salaries
         for (int i = 0; i <= 2; i++) {
             List<Employment> employments = slist.get(i).getEmploymenthistory().getEmployments();
             courselist.addAll(employments.get(employments.size() - 1).getRelevantcourseoffers());

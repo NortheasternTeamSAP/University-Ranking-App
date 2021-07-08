@@ -6,8 +6,11 @@
 package AdminUI;
 
 import info5100.university.example.CourseSchedule.CourseOffer;
+import info5100.university.example.CourseSchedule.SeatAssignment;
 import info5100.university.example.Department.Department;
 import info5100.university.example.Persona.EmploymentHistory.Employment;
+import info5100.university.example.Persona.Faculty.FacultyAssignment;
+import info5100.university.example.Persona.Faculty.FacultyProfile;
 import info5100.university.example.Persona.StudentDirectory;
 import info5100.university.example.Persona.StudentProfile;
 import java.util.ArrayList;
@@ -20,16 +23,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author preet
  */
-public class Details extends javax.swing.JPanel {
+public class Details2 extends javax.swing.JPanel {
 
     /**
      * Creates new form DepartmentDetails
      */
     StudentDirectory studentdata;
     Department department;
-    StudentProfile sp;
+    FacultyProfile fp;
+    StudentProfile studentdetails;
 
-    public Details(Department d) {
+    public Details2(Department d) {
         initComponents();
         this.department = d;
 
@@ -55,7 +59,6 @@ public class Details extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDepartment = new javax.swing.JTable();
-        btnViewDetails = new javax.swing.JButton();
         lblcoursestaken = new javax.swing.JLabel();
         lblcoursesfeedback = new javax.swing.JLabel();
         feedbackCoursePane = new javax.swing.JScrollPane();
@@ -66,24 +69,24 @@ public class Details extends javax.swing.JPanel {
         lblTitle.setBackground(new java.awt.Color(204, 0, 51));
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Overview Student Details");
+        lblTitle.setText("Overview Faculty Details");
         lblTitle.setOpaque(true);
 
         jScrollPane2.setBackground(new java.awt.Color(204, 204, 204));
 
         tblDepartment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Student ID", "Student Name", "GPA", "Current Employer", "Current Salary", "Current Position"
+                "Faculty ID", "Faculty Name", "Courses"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -91,16 +94,6 @@ public class Details extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(tblDepartment);
-
-        btnViewDetails.setBackground(new java.awt.Color(51, 51, 51));
-        btnViewDetails.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnViewDetails.setForeground(new java.awt.Color(255, 255, 255));
-        btnViewDetails.setText("Course Detail View");
-        btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewDetailsActionPerformed(evt);
-            }
-        });
 
         lblcoursestaken.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblcoursestaken.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -129,10 +122,6 @@ public class Details extends javax.swing.JPanel {
                 .addGap(89, 89, 89))
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnViewDetails)
-                .addGap(38, 38, 38))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(104, 104, 104)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblcoursestaken)
@@ -150,9 +139,7 @@ public class Details extends javax.swing.JPanel {
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnViewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblcoursestaken, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,34 +156,8 @@ public class Details extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
-        int selectedRowIndex = tblDepartment.getSelectedRow();
-
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to View.");
-            return;
-        }
-
-        DefaultTableModel model = (DefaultTableModel) tblDepartment.getModel();
-        StudentProfile sp1 = (StudentProfile) model.getValueAt(selectedRowIndex, 0);
-
-        lblcoursesfeedback.setVisible(true);
-        lblcoursestaken.setVisible(true);
-        feedbackCoursePane.setVisible(true);
-        courseTakenScrollPane.setVisible(true);
-        txtFeedbackCourses.setLineWrap(true);
-        txtCoursesopted.setLineWrap(true);
-        List<String> courseList = sp1.getCoursesTaken().stream().map(CourseOffer::getCourseName).collect(Collectors.toList());
-        txtCoursesopted.setText(courseList.toString());
-        List<CourseOffer> courseOfList = sp1.getEmploymenthistory().getEmployments().get(sp1.getEmploymenthistory().getEmployments().size() - 1).getRelevantcourseoffers();
-        List<String> courseList1 = courseOfList.stream().map(CourseOffer::getCourseName).collect(Collectors.toList());
-        txtFeedbackCourses.setText(courseList1.toString());
-
-    }//GEN-LAST:event_btnViewDetailsActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnViewDetails;
     private javax.swing.JScrollPane courseTakenScrollPane;
     private javax.swing.JScrollPane feedbackCoursePane;
     private javax.swing.JScrollPane jScrollPane2;
@@ -210,14 +171,17 @@ public class Details extends javax.swing.JPanel {
 
     private void populateTable(List<StudentProfile> list) {
         DefaultTableModel model = (DefaultTableModel) tblDepartment.getModel();
+        
         model.setRowCount(0);
         for (StudentProfile co : list) {
 
             Object[] row = new Object[6];
             row[0] = co;
             row[1] = co.getPerson().getName();
-           
-            row[2] = String.format("%.1f",co.getStudentGPA());
+            for(CourseOffer c:co.getCoursesTaken()){
+            row[2] = c.getCourseName();
+            }
+            
             Employment emp = co.getEmploymenthistory().getEmployments().get(co.getEmploymenthistory().getEmployments().size() - 1);
             row[3] = emp.getEmployer().getName();
             row[4] = emp.getSalary();

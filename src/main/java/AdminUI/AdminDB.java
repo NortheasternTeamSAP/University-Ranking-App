@@ -46,6 +46,7 @@ public class AdminDB extends javax.swing.JPanel {
         btnOverview = new javax.swing.JButton();
         btnStuInfo = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
+        btnCourseDetail1 = new javax.swing.JButton();
         workArea = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -54,7 +55,7 @@ public class AdminDB extends javax.swing.JPanel {
         btnCourseDetail.setBackground(new java.awt.Color(51, 51, 51));
         btnCourseDetail.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         btnCourseDetail.setForeground(new java.awt.Color(255, 255, 255));
-        btnCourseDetail.setText("Course Rankings");
+        btnCourseDetail.setText("Faculty");
         btnCourseDetail.setToolTipText("Click to view Course Rankings");
         btnCourseDetail.setBorderPainted(false);
         btnCourseDetail.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -103,6 +104,19 @@ public class AdminDB extends javax.swing.JPanel {
             }
         });
 
+        btnCourseDetail1.setBackground(new java.awt.Color(51, 51, 51));
+        btnCourseDetail1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        btnCourseDetail1.setForeground(new java.awt.Color(255, 255, 255));
+        btnCourseDetail1.setText("Statistics");
+        btnCourseDetail1.setToolTipText("Click to view Course Rankings");
+        btnCourseDetail1.setBorderPainted(false);
+        btnCourseDetail1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCourseDetail1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCourseDetail1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
@@ -117,7 +131,8 @@ public class AdminDB extends javax.swing.JPanel {
                             .addGroup(controlPanelLayout.createSequentialGroup()
                                 .addComponent(btnOverview, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(btnStuInfo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnStuInfo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnCourseDetail1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         controlPanelLayout.setVerticalGroup(
@@ -129,9 +144,11 @@ public class AdminDB extends javax.swing.JPanel {
                 .addComponent(btnOverview, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCourseDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
+                .addComponent(btnCourseDetail1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -185,7 +202,7 @@ public class AdminDB extends javax.swing.JPanel {
 
     private void btnCourseDetailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCourseDetailActionPerformed
         // TODO add your handling code here:
-        Details coursedetails = new Details(department);
+        Details2 coursedetails = new Details2(department);
         splitPane.setRightComponent(coursedetails);
     }//GEN-LAST:event_btnCourseDetailActionPerformed
 
@@ -201,6 +218,14 @@ public class AdminDB extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnLogOutActionPerformed
 
+    private void btnCourseDetail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCourseDetail1ActionPerformed
+       
+       FeedbackCourses fdbk = new FeedbackCourses(department);
+        splitPane.setRightComponent(fdbk);  
+        
+        
+    }//GEN-LAST:event_btnCourseDetail1ActionPerformed
+
 
     @Override
     public String toString(){
@@ -211,6 +236,7 @@ public class AdminDB extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCourseDetail;
+    private javax.swing.JButton btnCourseDetail1;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnOverview;
     private javax.swing.JButton btnStuInfo;

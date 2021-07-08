@@ -65,9 +65,9 @@ public class ViewStudentEmplyment extends javax.swing.JPanel {
         lblView.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblView.setText("View Employment Data");
 
-        jScrollPane1.setBackground(new java.awt.Color(204, 0, 51));
+        jScrollPane1.setBackground(new java.awt.Color(204, 204, 204));
 
-        tblEmp.setBackground(new java.awt.Color(204, 0, 51));
+        tblEmp.setBackground(new java.awt.Color(204, 204, 204));
         tblEmp.setForeground(new java.awt.Color(102, 102, 102));
         tblEmp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
